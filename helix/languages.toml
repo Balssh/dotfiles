@@ -1,0 +1,14 @@
+[[language]]
+name = "python"
+# auto-format = true
+language-servers = [ "pyright", "ruff" ]
+      
+[language-server.pyright.config.python.analysis]
+typeCheckingMode = "basic"
+
+[language-server.ruff]
+command = "ruff-lsp"
+  
+[language.formatter]
+command = "autopep8"
+args = ["-"]

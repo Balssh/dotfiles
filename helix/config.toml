@@ -1,0 +1,34 @@
+theme = "new_moon"
+
+[editor]
+line-number = "relative"
+true-color = true
+bufferline = "multiple"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.statusline]
+left = ["mode", "spinner", "version-control"]
+center = ["file-name"]
+right = ["diagnostics", "selections", "position", "position-percentage", "total-line-numbers", "file-type"]
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
+
+[editor.indent-guides]
+render = true
+character = "╎" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 0
+
+[editor.soft-wrap]
+enable = true
+
+[keys.normal]
+C-q = ":bc"
