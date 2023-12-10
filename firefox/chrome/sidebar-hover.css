@@ -1,0 +1,37 @@
+#sidebar-box {
+  --bar-width: 35px;
+  position: relative !important;
+  overflow-x: hidden !important;
+  /* margin-right: calc(10px * -1) !important; */
+  /* left: var(--bar-width) !important; */
+  min-width: var(--bar-width) !important;
+  max-width: var(--bar-width) !important;
+  border-right: 1px solid var(--sidebar-border-color);
+  z-index: 1;
+  transition: all 0.1s;
+}
+
+#sidebar-box:hover {
+  --expanded-width: 250px;
+  margin-right: calc(calc(var(--expanded-width) - var(--bar-width)) * -1) !important;
+  /* left: var(--expanded-width) !important; */
+  min-width: var(--expanded-width) !important;
+  max-width: var(--expanded-width) !important;
+}
+
+#sidebar-box:hover #sidebar-header {
+  min-width: var(--expanded-width) !important;
+  max-width: var(--expanded-width) !important;
+}
+
+/* #sidebar-header is hidden by default, change "none" to "inherit" to restore it. */
+#sidebar-header {
+  min-width: var(--bar-width) !important;
+  max-width: var(--bar-width) !important;
+  overflow: hidden !important;
+}
+
+/* #sidebar-splitter styles the divider between the sidebar and the rest of the browser. */
+#sidebar-splitter {
+  display: none;
+}

@@ -11,17 +11,16 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-(cat ~/.cache/wal/sequences &)
+# (cat ~/.cache/wal/sequences &)
 # Alternative (blocks terminal for 0-3ms)
-cat ~/.cache/wal/sequences
+# cat ~/.cache/wal/sequences
 # To add support for TTYs this line can be optionally added.
-source ~/.cache/wal/colors-tty.sh
-(bash ~/.cache/wal/colors-zsh.sh &)
+# source ~/.cache/wal/colors-tty.sh
+# (bash ~/.cache/wal/colors-zsh.sh &)
 
 if [[ ! -n ${SSH_CONNECTION} ]]; then
     export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 fi
-
 
 alias  l='eza -lh  --icons=auto' # long list
 alias ls='eza -1   --icons=auto' # short list
