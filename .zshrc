@@ -3,11 +3,21 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="mikeh"
 
 plugins=( 
+    ssh-agent
     git
     archlinux
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
+
+if [[ ! -n ${SSH_CONNECTION} ]]; then
+    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+fi
+# Enable ssh-agent forwarding
+zstyle :omz:plugins:ssh-agent agent-forwarding yes
+
+# Load ssh identities
+zstyle :omz:plugins:ssh-agent identities ~/.ssh/github_personal
 
 source $ZSH/oh-my-zsh.sh
 
@@ -18,9 +28,6 @@ source $ZSH/oh-my-zsh.sh
 # source ~/.cache/wal/colors-tty.sh
 # (bash ~/.cache/wal/colors-zsh.sh &)
 
-if [[ ! -n ${SSH_CONNECTION} ]]; then
-    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-fi
 
 alias  l='eza -lh  --icons=auto' # long list
 alias ls='eza -1   --icons=auto' # short list
@@ -31,5 +38,5 @@ alias grep='rg'
 alias hx='helix'
 alias icat="kitten icat"
 
-# export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 eval "$(starship init zsh)"

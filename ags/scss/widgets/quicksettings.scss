@@ -8,30 +8,23 @@ window#quicksettings .window-content {
   }
 
   .header {
-    @include spacing;
-  }
-
-  .system-box {
-    @include widget;
     @include spacing($rec: true);
 
-    padding: $padding;
+    button, .uptime, .battery {
+        @include button;
+        padding: $padding;
+        font-weight: bold;
+        min-height: 20px;
+        min-width: 20px;
+        image {
+            font-size: 1.2em;
+        }
+    }
 
-
-    button,
-    .uptime {
-      @include button;
-      padding: $padding;
-      font-weight: bold;
-      min-height: 20px;
-      min-width: 20px;
-
-      image {
-        font-size: 1.2em;
-      }
+    .battery {
+        @include spacing($multiplier: 0.5);
     }
   }
-
   .battery-progress {
     label {
       color: $accent-fg;
@@ -153,7 +146,7 @@ window#quicksettings .window-content {
 
   .simple-toggle {
     @include button;
-    padding: $padding;
+    padding: $padding $padding * 1.1;
   }
 
   .media {
