@@ -14,6 +14,7 @@ class WeatherService extends Service {
         temp: ["int"],
         icon: ["string"],
         description: ["string"],
+        city: ["string"],
         "weather-data": ["jsobject"],
       }
     );
@@ -23,6 +24,7 @@ class WeatherService extends Service {
   _temp = 0;
   _description = "";
   _icon = "";
+  _city = "";
   _weather_data = {};
   _url = GLib.Uri.parse("http://wttr.in/?format=j1", GLib.UriFlags.NONE);
   _decoder = new TextDecoder();
@@ -43,6 +45,9 @@ class WeatherService extends Service {
     return this._weather_data;
   }
 
+  get city() {
+    return this._city;
+  }
   constructor() {
     super();
     interval(900000, this._getWeather.bind(this)); // every 15 min
@@ -81,6 +86,8 @@ class WeatherService extends Service {
           weatherData["weather"][0]["astronomy"][0]["sunrise"].split(":")[0];
         const sunsetHour =
           weatherData["weather"][0]["astronomy"][0]["sunset"].split(":")[0];
+        const city = weatherData["nearest_area"][0]["areaName"][0]["value"];
+        this.updateProperty("city", city);
         this.updateProperty("icon", icons.weather[weatherCode] || "");
       }
     );

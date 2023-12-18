@@ -30,20 +30,7 @@ const WeatherBox = () =>
 const WeatherAdditionalInfo = () =>
   Widget.Label({
     class_name: "weather-additional-info",
-    binds: [
-      [
-        "label",
-        WeatherService,
-        "weather_data",
-        (out) => {
-          // const { current_condition, nearest_area, request } = out;
-          // const { temp_C, FeelsLikeC, weatherDesc } = request[0];
-          const { value: city } = out.nearest_area[0].areaName[0];
-          // const { query } = request[0];
-          return `${city}`;
-        },
-      ],
-    ],
+    binds: [["label", WeatherService, "city"]],
   });
 
 const WeatherRevealer = ({ direction = "left" } = {}) =>
