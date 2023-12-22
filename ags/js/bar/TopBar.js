@@ -18,7 +18,7 @@ import ScreenRecord from "./buttons/ScreenRecord.js";
 import BatteryBar from "./buttons/BatteryBar.js";
 import SubMenu from "./buttons/SubMenu.js";
 import Recorder from "../services/screenrecord.js";
-import WeatherBox from "./buttons/Weather.js";
+import WeatherRevealer from "./buttons/Weather.js";
 // import Taskbar from './buttons/Taskbar.js';
 import options from "../options.js";
 
@@ -87,7 +87,7 @@ const End = () =>
       SeparatorDot(Recorder, (r) => r.recording),
       SystemIndicators(),
       SeparatorDot(),
-      WeatherBox(),
+      WeatherRevealer(),
       SeparatorDot(Battery, (b) => b.available),
       BatteryBar(),
       SeparatorDot(),
