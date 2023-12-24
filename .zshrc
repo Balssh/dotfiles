@@ -28,6 +28,7 @@ source $ZSH/oh-my-zsh.sh
 # source ~/.cache/wal/colors-tty.sh
 # (bash ~/.cache/wal/colors-zsh.sh &)
 
+path+=( $HOME/.cargo/bin )
 
 alias  l='eza -lh  --icons=auto' # long list
 alias ls='eza -1   --icons=auto' # short list

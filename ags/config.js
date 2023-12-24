@@ -1,6 +1,9 @@
 import { readFile } from "resource:///com/github/Aylur/ags/utils.js";
 import App from "resource:///com/github/Aylur/ags/app.js";
 const pkgjson = JSON.parse(readFile(App.configDir + "/package.json"));
+import { timeout } from "resource:///com/github/Aylur/ags/utils.js";
+
+timeout(1000, () => JSON.stringify(App));
 
 const v = {
   ags: `v${pkg.version}`,

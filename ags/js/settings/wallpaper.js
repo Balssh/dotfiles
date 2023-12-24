@@ -22,4 +22,16 @@ export function wallpaper() {
     exec("hyprctl cursorpos").replace(" ", ""),
     options.desktop.wallpaper.img.value,
   ]).catch((err) => console.error(err));
+
+  // if (!dependencies(["swww"])) return;
+
+  // execAsync([
+  //   "swww",
+  //   "img",
+  //   "--transition-type",
+  //   "grow",
+  //   "--transition-pos",
+  //   exec("hyprctl cursorpos").replace(" ", ""),
+  //   options.desktop.wallpaper.img.value,
+  // ]).catch((err) => console.error(err));
 }

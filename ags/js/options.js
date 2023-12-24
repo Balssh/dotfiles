@@ -35,6 +35,7 @@ export default {
     unit: "",
   }),
 
+  // TODO: create dynamic colors from wallpaper with matugen
   color: {
     red: Option("#e55f86", { scss: "red" }),
     green: Option("#00D787", { scss: "green" }),
@@ -239,7 +240,7 @@ export default {
   },
 
   notifications: {
-    black_list: Option(["Spotify"], { note: "app-name | entry" }),
+    black_list: Option(["Spotify", "Cider"], { note: "app-name | entry" }),
     position: Option(["top"], { note: "anchor" }),
     width: Option(450),
   },
@@ -274,7 +275,6 @@ export default {
   substitutions: {
     icons: [
       ["blueberry.py", "bluetooth"],
-      ["Caprine", "facebook-messenger"],
       ["", "preferences-desktop-display"],
     ],
     titles: [
