@@ -2,13 +2,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="mikeh"
 
-plugins=( 
-    ssh-agent
-    git
-    archlinux
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-)
+plugins=(ssh-agent git archlinux zsh-autosuggestions zsh-syntax-highlighting)
 
 if [[ ! -n ${SSH_CONNECTION} ]]; then
     export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
@@ -20,7 +14,6 @@ zstyle :omz:plugins:ssh-agent agent-forwarding yes
 zstyle :omz:plugins:ssh-agent identities ~/.ssh/github_personal
 
 source $ZSH/oh-my-zsh.sh
-
 # (cat ~/.cache/wal/sequences &)
 # Alternative (blocks terminal for 0-3ms)
 # cat ~/.cache/wal/sequences
