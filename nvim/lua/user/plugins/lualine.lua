@@ -1,6 +1,7 @@
 return {
   {
     'nvim-lualine/lualine.nvim',
+    event = "BufReadPost",
     config = function()
       -- Color table for highlights
       local colors = {
@@ -43,6 +44,7 @@ return {
             normal = { c = { fg = colors.fg, bg = colors.bg } },
             inactive = { c = { fg = colors.fg, bg = colors.bg } },
           },
+          disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
         },
         sections = {
           -- these are to remove the defaults

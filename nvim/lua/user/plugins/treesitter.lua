@@ -2,14 +2,12 @@ return {
   'nvim-treesitter/nvim-treesitter',
   dependencies = {
     { 'JoosepAlviste/nvim-ts-context-commentstring' },
-    { 'windwp/nvim-ts-autotag', opts = {} },
-    'HiPhish/nvim-ts-rainbow2',
-    { 'windwp/nvim-autopairs', opts = {} },
+    { 'nvim-treesitter/nvim-treesitter-textobjects' },
   },
 
   build = ':TSUpdate',
-  event = 'BufReadPost',
-
+  lazy = true,
+  event = { 'BufReadPost', 'BufNewFile' },
   config = function()
     local treesitter = require 'nvim-treesitter.configs'
 
@@ -23,10 +21,11 @@ return {
 
       highlight = { enable = true },
       indent = { enable = true },
+      autotag = { enable = true },
       rainbow = {
         enable = true,
-        query = 'rainbow-parens',
-        strategy = require('ts-rainbow').strategy['global'],
+        query = 'rainbow-delimiters',
+        strategy = require('rainbow-delimiters').strategy['global'],
       },
       incremental_selection = {
         enable = true,

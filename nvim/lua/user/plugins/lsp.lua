@@ -9,11 +9,8 @@ return {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
 
-      -- Useful status updates for LSP
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', opts = {} },
 
-      -- Additional lua configuration, makes nvim stuff amazing!
       { 'folke/neodev.nvim', opts = {} },
     },
     config = function()
@@ -40,6 +37,9 @@ return {
         -- See `:help K` for why this keymap
         nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
         nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+        nmap('[d', vim.diagnostic.goto_prev, "Next Diagnostic")
+        nmap(']d', vim.diagnostic.goto_next,  "Previous Diagnostic")
+        nmap('<leader>cd', vim.diagnostic.open_float, '[C]ode [D]iagnostics')
 
         -- Lesser used LSP functionality
         nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')

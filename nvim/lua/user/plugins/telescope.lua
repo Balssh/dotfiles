@@ -11,10 +11,11 @@ return {
         cond = function()
           return vim.fn.executable 'make' == 1
         end,
-        config = function()
-          require('telescope').load_extension 'fzf'
-        end,
       },
+      {
+        'debugloop/telescope-undo.nvim',
+      },
+      { 'nvim-telescope/telescope-frecency.nvim' },
     },
     config = function()
       local actions = require 'telescope.actions'
@@ -24,6 +25,9 @@ return {
         },
       }
 
+      require('telescope').load_extension 'fzf'
+      require('telescope').load_extension 'undo'
+      require('telescope').load_extension 'frecency'
       -- Telescope live_grep in git root
       -- Function to find the git root directory based on the current buffer's path
       local function find_git_root()
@@ -60,7 +64,9 @@ return {
 
       vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
 
-      vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
+      vim.keymap.set('n', '<leader>?', function()
+        require('telescope').extensions.frecency.frecency { workspace = 'CWD' }
+      end, { desc = '[?] Find recently opened files' })
       vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
       vim.keymap.set('n', '<leader>/', function()
         require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -85,9 +91,10 @@ return {
       vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on Git Root' })
       vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
+      vim.keymap.set('n', '<leader>su', require('telescope').extensions.undo.undo, { desc = '[S]earch [U]ndo' })
 
       -- vim telescope
-      vim.keymap.set('n', '<leader>gc', require('telescope.builtin').git_commits { desc = '[G]it [C]ommits' })
+      vim.keymap.set('n', '<leader>gc', require('telescope.builtin').git_commits, { desc = '[G]it [C]ommits' })
       vim.keymap.set('n', '<leader>gs', require('telescope.builtin').git_status, { desc = '[G]it [S]tatus' })
       vim.keymap.set({ 'n', 'x' }, '<leader>gB', require('telescope.builtin').git_bcommits, { desc = '[G]it [B]commits' })
       vim.keymap.set('n', '<leader>gb', require('telescope.builtin').git_branches, { desc = '[G]it [B]ranches' })

@@ -7,6 +7,11 @@ opt.showmode = false
 
 opt.clipboard = "unnamedplus"
 opt.cursorline = true
+opt.scrolloff = 8
+
+opt.backup = false
+opt.swapfile = false
+opt.backupskip = { '/tmp/*', '/private/tmp/*' }
 
 -- Indenting
 opt.expandtab = true
