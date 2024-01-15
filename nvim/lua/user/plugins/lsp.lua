@@ -66,6 +66,7 @@ return {
         pyright = {},
         ruff_lsp = {},
         dockerls = {},
+        bashls = {},
       }
 
       -- Setup neovim lua configuration
@@ -118,6 +119,7 @@ return {
       require('mason').setup {}
       local ensure_installed = {
         'stylua',
+        'shfmt'
       }
       vim.api.nvim_create_user_command('MasonInstallAll', function()
         vim.cmd('MasonInstall ' .. table.concat(ensure_installed, ' '))

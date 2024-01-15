@@ -125,4 +125,29 @@ return {
   },
   { 'echasnovski/mini.surround', event = 'BufReadPost', version = '*', opts = {} },
   { 'echasnovski/mini.pairs', event = 'BufReadPost', version = '*', opts = {} },
+  {
+    'akinsho/toggleterm.nvim',
+    cmd = { 'ToggleTerm', 'TermExec' },
+    keys = {
+      { '<C-/>', '<cmd>ToggleTerm direction=float<cr>', mode = { 'n', 't' }, desc = 'ToggleTerm float' },
+      { '<leader>tb', '<cmd>TermExec cmd=btm direction=float<cr>', desc = 'ToggleTerm btm' },
+    },
+    opts = {
+      highlights = {
+        Normal = { link = 'Normal' },
+        NormalNC = { link = 'NormalNC' },
+        NormalFloat = { link = 'NormalFloat' },
+        FloatBorder = { link = 'FloatBorder' },
+        StatusLine = { link = 'StatusLine' },
+        StatusLineNC = { link = 'StatusLineNC' },
+        WinBar = { link = 'WinBar' },
+        WinBarNC = { link = 'WinBarNC' },
+      },
+      size = 10,
+      on_create = function()
+        vim.opt.foldcolumn = '0'
+        vim.opt.signcolumn = 'no'
+      end,
+    },
+  },
 }
