@@ -37,8 +37,8 @@ return {
         -- See `:help K` for why this keymap
         nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
         nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-        nmap('[d', vim.diagnostic.goto_prev, "Next Diagnostic")
-        nmap(']d', vim.diagnostic.goto_next,  "Previous Diagnostic")
+        nmap('[d', vim.diagnostic.goto_prev, 'Next Diagnostic')
+        nmap(']d', vim.diagnostic.goto_next, 'Previous Diagnostic')
         nmap('<leader>cd', vim.diagnostic.open_float, '[C]ode [D]iagnostics')
 
         -- Lesser used LSP functionality
@@ -66,6 +66,8 @@ return {
             telemetry = { enable = false },
           },
         },
+        pyright = {},
+        ruff_lsp = {},
       }
 
       -- Setup neovim lua configuration
@@ -95,24 +97,7 @@ return {
       -- [[ System LSPs ]]
       local lspconfig = require 'lspconfig'
       servers = {
-        rust_analyzer = {
-          ['rust-analyzer'] = {
-            imports = {
-              granularity = {
-                group = 'module',
-              },
-              prefix = 'self',
-            },
-            cargo = {
-              buildScripts = {
-                enable = true,
-              },
-            },
-            procMacro = {
-              enable = true,
-            },
-          },
-        },
+        ruff_lsp = {},
       }
 
       for server_name, server_settings in pairs(servers) do
@@ -122,6 +107,13 @@ return {
           settings = server_settings,
         }
       end
+
+      require('lspconfig').ruff_lsp.setup {
+        on_attach = function(client, _)
+          -- Disable hover in favor of Pyright
+          client.server_capabilities.hoverProvider = false
+        end,
+      }
     end,
   },
 }

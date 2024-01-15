@@ -1,19 +1,23 @@
 return {
   {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
+    'kepano/flexoki-neovim',
+    name = 'flexoki',
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      vim.cmd 'colorscheme flexoki-dark'
     end,
   },
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help ibl`
     main = 'ibl',
     event = 'BufReadPost',
+  },
+  {
+    'max397574/better-escape.nvim',
+    event = 'InsertEnter',
+    opts = {
+      mapping = { 'jk', 'jj', 'kj', 'kk' },
+    },
   },
 
   {
