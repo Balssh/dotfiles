@@ -7,7 +7,7 @@ return {
       {
         '<leader>cf',
         function()
-          require('conform').format()
+          require('conform').format { async = true, lsp_fallback = true }
         end,
         desc = '[C]ode [F]ormat',
       },
@@ -15,7 +15,7 @@ return {
     opts = {
       formatters_by_ft = {
         lua = { 'stylua' },
-        python = {'ruff_format'}
+        python = { 'ruff_format' },
       },
     },
   },

@@ -12,10 +12,9 @@ return {
           return vim.fn.executable 'make' == 1
         end,
       },
-      {
-        'debugloop/telescope-undo.nvim',
-      },
+      { 'debugloop/telescope-undo.nvim' },
       { 'nvim-telescope/telescope-frecency.nvim' },
+      { 'nvim-telescope/telescope-ui-select.nvim' },
     },
     config = function()
       local actions = require 'telescope.actions'
@@ -28,6 +27,7 @@ return {
       require('telescope').load_extension 'fzf'
       require('telescope').load_extension 'undo'
       require('telescope').load_extension 'frecency'
+      require('telescope').load_extension 'ui-select'
       -- Telescope live_grep in git root
       -- Function to find the git root directory based on the current buffer's path
       local function find_git_root()

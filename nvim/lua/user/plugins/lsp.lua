@@ -6,7 +6,7 @@ return {
     cmd = { 'LspInfo', 'LspInstall', 'LspUninstall' },
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      'williamboman/mason.nvim',
+      { 'williamboman/mason.nvim' },
       'williamboman/mason-lspconfig.nvim',
 
       { 'j-hui/fidget.nvim', opts = {} },
@@ -55,9 +55,6 @@ return {
         end, { desc = 'Format current buffer with LSP' })
       end
 
-      require('mason').setup()
-      require('mason-lspconfig').setup()
-
       local servers = {
 
         lua_ls = {
@@ -68,6 +65,7 @@ return {
         },
         pyright = {},
         ruff_lsp = {},
+        dockerls = {},
       }
 
       -- Setup neovim lua configuration
@@ -96,9 +94,6 @@ return {
       }
       -- [[ System LSPs ]]
       local lspconfig = require 'lspconfig'
-      servers = {
-        ruff_lsp = {},
-      }
 
       for server_name, server_settings in pairs(servers) do
         lspconfig[server_name].setup {
@@ -114,6 +109,20 @@ return {
           client.server_capabilities.hoverProvider = false
         end,
       }
+    end,
+  },
+  {
+    'williamboman/mason.nvim',
+    cmd = { 'Mason', 'MasonInstall', 'MasonInstallAll', 'MasonUpdate' },
+    config = function()
+      require('mason').setup {}
+      local ensure_installed = {
+        'stylua',
+      }
+      vim.api.nvim_create_user_command('MasonInstallAll', function()
+        vim.cmd('MasonInstall ' .. table.concat(ensure_installed, ' '))
+      end, {})
+      vim.g.mason_binaries_list = ensure_installed
     end,
   },
 }
