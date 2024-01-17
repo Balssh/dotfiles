@@ -13,7 +13,7 @@ return {
       'hrsh7th/nvim-cmp',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
-
+      'roobert/tailwindcss-colorizer-cmp.nvim',
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
 
@@ -40,11 +40,13 @@ return {
           completeopt = 'menu,menuone,noinsert',
         },
         formatting = {
+          expandable_indicator = true,
           format = require('lspkind').cmp_format {
-            mode = 'symbol',
+            mode = 'symbol_text',
             maxwidth = 50,
             ellipsis_char = '...',
             symbol_map = { Codeium = ' ' },
+            before = require('tailwindcss-colorizer-cmp').formatter,
           },
         },
         mapping = cmp.mapping.preset.insert {

@@ -67,6 +67,9 @@ return {
         ruff_lsp = {},
         dockerls = {},
         bashls = {},
+        biome = {},
+        astro = {},
+        tailwindcss = {},
       }
 
       -- Setup neovim lua configuration
@@ -92,24 +95,17 @@ return {
             filetypes = (servers[server_name] or {}).filetypes,
           }
         end,
-      }
-      -- [[ System LSPs ]]
-      local lspconfig = require 'lspconfig'
-
-      for server_name, server_settings in pairs(servers) do
-        lspconfig[server_name].setup {
-          capabilities = capabilities,
-          on_attach = on_attach,
-          settings = server_settings,
-        }
-      end
-
-      require('lspconfig').ruff_lsp.setup {
-        on_attach = function(client, _)
-          -- Disable hover in favor of Pyright
-          client.server_capabilities.hoverProvider = false
+        ['ruff_lsp'] = function()
+          local lspconfig = require 'lspconfig'
+          lspconfig.ruff_lsp.setup {
+            on_attach = function(client, _)
+              -- Disable hover in favor of Pyright
+              client.server_capabilities.hoverProvider = false
+            end,
+          }
         end,
       }
+
     end,
   },
   {
@@ -119,7 +115,7 @@ return {
       require('mason').setup {}
       local ensure_installed = {
         'stylua',
-        'shfmt'
+        'shfmt',
       }
       vim.api.nvim_create_user_command('MasonInstallAll', function()
         vim.cmd('MasonInstall ' .. table.concat(ensure_installed, ' '))
