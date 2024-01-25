@@ -86,7 +86,9 @@ return {
                     new_section("Recent files", "Telescope frecency workspace=CWD", "Telescope"),
                     new_section("Grep text", "Telescope live_grep", "Telescope"),
                     new_section("- File explorer", "lua require('oil').open_float('.')", "Telescope"),
+                    new_section("Neogit", "Neogit", "Git"),
                     new_section("Lazy", "Lazy", "Config"),
+                    new_section("Mason", "Mason", "Config"),
                     new_section("New file", "ene | startinsert", "Built-in"),
                     new_section("Quit", "qa", "Built-in"),
                     -- new_section("Session restore", [[lua require("persistence").load()]], "Session"),
@@ -130,6 +132,7 @@ return {
     cmd = { 'ToggleTerm', 'TermExec' },
     keys = {
       { '<C-/>', '<cmd>ToggleTerm direction=float<cr>', mode = { 'n', 't' }, desc = 'ToggleTerm float' },
+      { '<C-_>', '<cmd>ToggleTerm direction=float<cr>', mode = { 'n', 't' }, desc = 'ToggleTerm float' },
       { '<leader>tb', '<cmd>TermExec cmd=btm direction=float<cr>', desc = 'ToggleTerm btm' },
     },
     opts = {
