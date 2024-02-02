@@ -40,4 +40,21 @@ M.nvimtree = {
 	},
 }
 
+M.ufo = {
+	n = {
+		["zR"] = {
+			function()
+				require("ufo").openAllFolds()
+			end,
+			"Open all folds",
+		},
+		["zM"] = {
+			function()
+				require("ufo").closeAllFolds()
+			end,
+			"Close all folds",
+		},
+	},
+}
+
 return M

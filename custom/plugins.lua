@@ -91,9 +91,24 @@ return {
 
 	{
 		"j-hui/fidget.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("fidget").setup()
-    end
+		event = "VeryLazy",
+		config = function()
+			require("fidget").setup()
+		end,
 	},
+
+	{
+		"kevinhwang91/nvim-ufo",
+		dependencies = "kevinhwang91/promise-async",
+		event = "VeryLazy",
+		config = function()
+			require("ufo").setup()
+		end,
+	},
+
+	-- {
+	-- 	"lukas-reineke/headlines.nvim",
+	-- 	ft = { "markdown", "norg", "rmd", "org" },
+	-- 	opts = {},
+	-- },
 }

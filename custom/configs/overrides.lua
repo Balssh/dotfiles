@@ -44,6 +44,10 @@ M.mason = {
 		-- "typescript-language-server",
 		"tailwindcss-language-server",
 
+    -- markdown
+    "marksman",
+    "markdownlint",
+
 		-- shell
 		"bash-language-server",
 		"shfmt",
