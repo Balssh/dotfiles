@@ -11,8 +11,8 @@ M.ui = {
 	-- hl_add = {},
 	-- hl_override = {},
 	-- changed_themes = {},
-	-- theme_toggle = { "tomorrow_night", "one_light" },
-	theme = "tomorrow_night", -- default theme
+	-- theme_toggle = { "gruvchad", "one_light" },
+	theme = "gruvchad", -- default theme
 	transparency = false,
 	lsp_semantic_tokens = true, -- needs nvim v0.9, just adds highlight groups for lsp semantic tokens
 
