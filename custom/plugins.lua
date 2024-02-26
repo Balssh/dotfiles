@@ -106,9 +106,13 @@ return {
 		end,
 	},
 
-	-- {
-	-- 	"lukas-reineke/headlines.nvim",
-	-- 	ft = { "markdown", "norg", "rmd", "org" },
-	-- 	opts = {},
-	-- },
+	{
+		"kdheepak/lazygit.nvim",
+		cmd = "LazyGit",
+	},
+
+	{
+		"folke/flash.nvim",
+		opts = {},
+	},
 }

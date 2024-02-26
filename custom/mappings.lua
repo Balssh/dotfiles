@@ -19,6 +19,8 @@ M.general = {
 	n = {
 
 		["<leader>qq"] = { "<cmd> wqa! <CR>", "Save and exit all" },
+		["<C-d>"] = { "<C-d>zz", "Scroll down half page" },
+		["<C-u>"] = { "<C-u>zz", "Scroll up half page" },
 	},
 	v = {},
 }
@@ -31,6 +33,12 @@ M.conform = {
 			end,
 			"LSP Formatting",
 		},
+	},
+}
+
+M.git = {
+	n = {
+		["<leader>gg"] = { "<cmd>LazyGit<CR>", "LazyGit" },
 	},
 }
 
@@ -53,6 +61,76 @@ M.ufo = {
 				require("ufo").closeAllFolds()
 			end,
 			"Close all folds",
+		},
+	},
+}
+
+M.flash = {
+	n = {
+		["s"] = {
+
+			-- mode = { "n", "x", "o" },
+			function()
+				require("flash").jump()
+			end,
+			desc = "Flash",
+		},
+		["S"] = {
+			function()
+				require("flash").treesitter()
+			end,
+			desc = "Flash Treesitter",
+		},
+	},
+	x = {
+		["s"] = {
+
+			-- mode = { "n", "x", "o" },
+			function()
+				require("flash").jump()
+			end,
+			desc = "Flash",
+		},
+		["S"] = {
+			function()
+				require("flash").treesitter()
+			end,
+			desc = "Flash Treesitter",
+		},
+		["R"] = {
+			function()
+				require("flash").treesitter_search()
+			end,
+			desc = "Treesitter Search",
+		},
+	},
+	o = {
+		["s"] = {
+
+			function()
+				require("flash").jump()
+			end,
+			desc = "Flash",
+		},
+		["S"] = {
+			function()
+				require("flash").treesitter()
+			end,
+			desc = "Flash Treesitter",
+		},
+		["R"] = {
+			function()
+				require("flash").treesitter_search()
+			end,
+			desc = "Treesitter Search",
+		},
+	},
+	c = {
+		["<c-s>"] = {
+			function()
+				require("flash").toggle()
+			end,
+			desc = "Toggle Flash Search",
 		},
 	},
 }
